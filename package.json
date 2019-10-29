@@ -27,6 +27,7 @@
     "jquery": "^3.4.1",
     "require": "^2.4.20",
     "rxjs": "~6.4.0",
+    "socket.io": "^2.3.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },
@@ -52,10 +53,10 @@
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
   },
-  "browser":{
+  "browser": {
     "child_process": false,
     "fs": false,
     "tls": false,
     "net": false
-    }
+  }
 }

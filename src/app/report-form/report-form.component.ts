@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ReportLog } from '../report-log';
+import { WebSocketService } from '../web-socket.service';
 // import { webSocket } from 'rxjs/webSocket';
 // import { authconnect } from '../../assets/js/sheets.js';
 
@@ -19,6 +20,8 @@ export class ReportFormComponent implements OnInit {
   submitted = false;
 
   onSubmit() {
+    console.log(this.model);
+    this.webSocketService.emit('submission', this.model);
     this.submitted = true;
     // authconnect(this.model);
   }
@@ -26,16 +29,11 @@ export class ReportFormComponent implements OnInit {
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
-  constructor() { }
+  constructor(private webSocketService: WebSocketService) {}
 
   ngOnInit() {
-    // this.subject.subscribe();
 
   }
-  // sendToServer($event) {
-  //   // this.subject.next(this.model);
-  //   // this.subject.complete();
-  // }
 
   date() {
     const today = new Date();

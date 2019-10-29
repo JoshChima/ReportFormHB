@@ -1,14 +1,14 @@
 // import { ReportLog } from 'src/app/report-log';
-import * as google from '/googleapis';
-import keys from '../keys.json'
+// import * as google from '/googleapis';
+// import keys from '../keys.json'
 
 // import { GoogleApis } from 'googleapis';
 // import * as keys from '../keys.json';
 
-// const {
-  //   google
-  // } = require('googleapis');
-  // const keys = require('../keys.json');
+const {
+    google
+  } = require('googleapis');
+  const keys = require('../keys.json');
 
 // https://console.developers.google.com/apis/dashboard?project=reportformhb-1572031335245&authuser=0&pli=1
 
