@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-const port = process.env.port || 8800;
 const path = require('path');
 const http = require('http')
 const socketio = require('socket.io')
@@ -17,9 +16,9 @@ app.get('/', (req, res) => {
 
 });
 
-server.listen(port, () => {
-  console.log(`Express app listining on port ${port}!`);
-
+server.listen(process.env.port || 8800, () => {
+  var port = server.address().port;
+  console.log(`Express app now running on port ${port}!`);
 });
 
 const io = socketio(server);
