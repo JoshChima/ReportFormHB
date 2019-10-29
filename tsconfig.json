@@ -19,6 +19,9 @@
       "dom"
     ]
   },
+  "resolveJsonModule": true,
+  "allowSyntheticDefaultImports": true,
+  "esModuleInterop": true,
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true

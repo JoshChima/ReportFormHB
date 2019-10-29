@@ -1,0 +1,148 @@
+{{diagnostic}}
+<div [hidden]="submitted" class="container">
+    <h1>Report Form</h1>
+    <form (ngSubmit)="onSubmit()" #reportForm="ngForm">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name"
+            required
+            [(ngModel)]="model.name" name="name" #name='ngModel' #spy>
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+         Name is required
+       </div>
+            TODO: remove this: {{spy.className}}<br>
+        <label for="department">Department</label>
+        <input type="text" class="form-control" id="department"
+            required
+            [(ngModel)]="model.department" name="department" #name='ngModel'>
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+         Department is required
+       </div>
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone"
+            required
+            [(ngModel)]="model.phone" name="phone" #name='ngModel'>
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+         Phone is required
+       </div>
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email"
+            required
+            [(ngModel)]="model.email" name="email" #name='ngModel'>
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+         Email is required
+       </div>
+      </div>
+
+      <div class="form-group">
+        <label for="reportTitle">Title of Report</label>
+        <input type="text" class="form-control" id="reportTitle"
+            required
+            [(ngModel)]="model.reportTitle" name="reportTitle" #name='ngModel'>
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+         Title is required
+       </div>
+      </div>
+      <div class="form-group">
+        <label for="reportType">Type of Report</label>
+        <input type="text" class="form-control" id="reporttype"
+            required
+            [(ngModel)]="model.reportType" name="reportType" #name='ngModel'>
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+         Type is required
+       </div>
+      </div>
+      <div class="form-group">
+        <label for="reportInfo">Use of Report Information</label>
+        <input type="text" class="form-control" id="reportInfo"
+            required
+            [(ngModel)]="model.reportInfo" name="reportInfo" #name='ngModel'>
+        <div [hidden]="name.valid || name.pristine"
+            class="alert alert-danger">
+         Information is required
+       </div>
+      </div>
+
+      <div class="form-group">
+        <p class="wording">The Receiving Party must abide by the 
+            general policies to: use only that data 
+            needed to perform assigned or authorized 
+            University duties, adhere to privacy standards to 
+            ensure sensitive data is kept confidential, not use 
+            the data for personal gain or to satisfy personal 
+            curiosity, maintain data about individuals in a secure 
+            fashion such that it cannot be viewed by unauthorized 
+            individuals, use the information only for the purpose 
+            for which it was requested, not release the information to 
+            any other individual or office for another purpose than is 
+            required to perform their job, and until those persons have 
+            signed necessary confidentiality forms, not use 
+            data received for publication unless the data 
+            is specifically requested for that purpose, and protect the 
+            confidentiality of the information.</p>
+      </div>
+      <div>
+            <label for="signature">Signature</label>
+            <input type="text" class="form-control" id="signature" 
+                required
+                [(ngModel)]="model.signature" name="signature" #name='ngModel'>
+            <div [hidden]="name.valid || name.pristine"
+                class="alert alert-danger">
+             Signature is required
+           </div>
+      </div>
+      
+
+      <button type="button" class="btn btn-default" (click)="newReport(); reportForm.reset()">Clear</button>
+      <button type="submit" class="btn btn-success" [disabled]="!reportForm.form.valid">Submit</button>
+    </form>
+</div>
+
+<div class="review" [hidden]="!submitted">
+        <h2>You submitted the following:</h2>
+        <div class="row">
+          <div class="col-xs-3">Name</div>
+          <div class="col-xs-9">{{ model.name }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Department</div>
+          <div class="col-xs-9">{{ model.department }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Phone</div>
+          <div class="col-xs-9">{{ model.phone }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Email</div>
+          <div class="col-xs-9">{{ model.email }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Title</div>
+          <div class="col-xs-9">{{ model.reportTitle }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Type</div>
+          <div class="col-xs-9">{{ model.reportType }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Email</div>
+          <div class="col-xs-9">{{ model.email }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Info</div>
+          <div class="col-xs-9">{{ model.reportInfo }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Signature</div>
+          <div class="col-xs-9">{{ model.signature }}</div>
+        </div>
+        <br>
+        <button class="btn btn-primary" (click)="onSubmit();">Approve</button>
+        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+      </div>

@@ -1,0 +1,9 @@
+.review {
+    color: honeydew;
+    margin:auto;
+    width: 70%;
+    border: 3px solid grey;
+    padding: 10px;
+    background-color: grey;
+    border-radius: 25px;
+}
