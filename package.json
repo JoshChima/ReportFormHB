@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/JoshChima/ReportFormHB/issues"
   },
-  "homepage": "https://github.com/JoshChima/ReportFormHB#readme"
+  "homepage": "https://github.com/JoshChima/ReportFormHB#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "googleapis": "^39.2.0",
+    "http": "0.0.0"
+  }
 }

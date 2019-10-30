@@ -5,7 +5,9 @@ const http = require('http')
 const socketio = require('socket.io')
 const server = http.Server(app);
 
-app.use(express.static('dist/ReportFormHB'))
+app.use(express.static('public_html'))
+
+
 
 app.get('/', (req, res) => {
     // var options = {
@@ -13,7 +15,7 @@ app.get('/', (req, res) => {
     // }
 
     // return res.sendFile('index.html', options);
-    res.sendFile(path.join(__dirname + 'index.html'))
+    res.sendFile(path.join(__dirname + 'public_html/index.html'))
 
 });
 
@@ -22,11 +24,11 @@ server.listen(process.env.PORT || 8800, () => {
   console.log(`Express app now running on port ${port}!`);
 });
 
-const io = socketio(server);
+// const io = socketio(server);
 
-io.on('connection', (socket) => {
-    socket.on('submission', authconnect)
-})
+// io.on('connection', (socket) => {
+//     socket.on('submission', authconnect)
+// })
 
 //################# Google Sheets ###################
 
@@ -37,14 +39,23 @@ const {
 
 // https://console.developers.google.com/apis/dashboard?project=reportformhb-1572031335245&authuser=0&pli=1
 
-const today = new Date();
-const date = today.getMonth() + '/' + today.getDay() + '/' + today.getFullYear();
 
 // https://developers.google.com/identity/protocols/googlescopes
 
 
 
 function authconnect(submission) {
+  const today = new Date();
+  const date = today.getMonth() + '/' + today.getDay() + '/' + today.getFullYear();
+  const submission = [document.getElementById("name").value, 
+  date, 
+  document.getElementById("department").value, 
+  document.getElementById("phone").value, 
+  document.getElementById("email").value, 
+  document.getElementById("title").value, 
+  document.getElementById("type").value, 
+  document.getElementById("info").value, 
+  document.getElementById("signature").value];
   console.log('Sent');
   const client = new google.auth.JWT(
     keys.client_email,
