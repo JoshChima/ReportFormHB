@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
 
 });
 
-server.listen(process.env.port || 8800, () => {
+server.listen(process.env.PORT || 8800, () => {
   var port = server.address().port;
   console.log(`Express app now running on port ${port}!`);
 });
