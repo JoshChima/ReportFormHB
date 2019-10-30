@@ -8,11 +8,12 @@ const server = http.Server(app);
 app.use(express.static('dist/ReportFormHB'))
 
 app.get('/', (req, res) => {
-    var options = {
-        root: path.join(__dirname, 'dist/ReportFormHB')
-    }
+    // var options = {
+    //     root: path.join(__dirname, 'dist/ReportFormHB')
+    // }
 
-    return res.sendFile('index.html', options);
+    // return res.sendFile('index.html', options);
+    res.sendFile(path.join(__dirname + '/dist/ReportFormHB/index.html'))
 
 });
 
