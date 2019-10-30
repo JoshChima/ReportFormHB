@@ -13,7 +13,7 @@ app.get('/', (req, res) => {
     // }
 
     // return res.sendFile('index.html', options);
-    res.sendFile(path.join(__dirname + '/dist/ReportFormHB/index.html'))
+    res.sendFile(path.join(__dirname + 'index.html'))
 
 });
 
