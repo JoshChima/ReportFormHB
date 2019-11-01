@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "googleapis": "^39.2.0",
     "http": "0.0.0",
+    "morgan": "^1.9.1",
     "nodemon": "^1.19.4",
     "socket.io": "^2.3.0"
   }

@@ -1,28 +1,28 @@
-const express = require('express')
+const express = require('express');
 const app = express();
 const path = require('path');
-const http = require('http')
-const socketio = require('socket.io')
+const http = require('http');
+const socketio = require('socket.io');
 const server = http.Server(app);
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
 
-app.use(bodyParser.urlencoded({ extended: true })); 
+app.use(bodyParser.urlencoded({ extended: false })); 
 
-// app.use(express.static('public_html'))
+app.use(express.static('./public_html'))
 
 
 
-app.get('/', (req, res) => {
-    // var options = {
-    //     root: path.join(__dirname, 'dist/ReportFormHB')
-    // }
+// app.get('/submit', (req, res) => {
+//     // var options = {
+//     //     root: path.join(__dirname, 'dist/ReportFormHB')
+//     // }
 
-    // return res.sendFile('index.html', options);
-    res.sendFile(path.join(__dirname + '/public_html/index.html'))
+//     // return res.sendFile('index.html', options);
 
-});
-
-app.post('/', function(req, res) {
+// });
+var isSubmitted = false
+app.post('/submit', function(req, res) {
   const today = new Date();
   const date = today.getMonth() + '/' + today.getDay() + '/' + today.getFullYear();
   // const submission = [document.getElementById("name").value, 
@@ -34,17 +34,13 @@ app.post('/', function(req, res) {
   // document.getElementById("type").value, 
   // document.getElementById("info").value, 
   // document.getElementById("signature").value];
-  let submission = [req.body.name, 
-  date, req.body.department, 
-  req.body.phone,
-  req.body.email, 
-  req.body.title, 
-  req.body.type, 
-  req.body.info, 
-  req.body.signature]
+  let submission = [req.body.name, date, req.body.department, req.body.phone, req.body.email, req.body.title, req.body.type, req.body.info, req.body.signature]
+  //console.log(submission)
   authconnect(submission)
   // res.send(req.body.name);
-  console.log(req.body.name)
+  isSubmitted = true
+  res.sendFile(path.join(__dirname + '/public_html/index.html'))
+  // res.end()
 });
 
 server.listen(process.env.PORT || 8800, () => {
