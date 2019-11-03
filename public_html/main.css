@@ -1,3 +1,71 @@
+html,
+body{
+    font-family: 'Lato', 'Open Sans', Helvetica, Arial, sans-serif;
+    color: white;
+    background-color: #f3f1e9;
+}
+.form-group input {
+    padding: 10px;
+    width: 600px;
+    /* margin: auto; */
+}
+
+.padding-0{
+    padding-right:0;
+    padding-left:0;
+}
+
+.form-group {
+    margin: auto;
+    padding: 0px;
+}
+
 .col .form-group input {
     width: 300px;
+    padding: 0px;
+}
+
+/* .main-form {
+    width: 450;
+    margin: auto;
+    padding: 10px;
+} */
+/* margin: auto centers form */
+
+/* input#info {
+    height: 450;
+} */
+
+.main-div {
+    flex: auto;
+    /* position: relative; */
+    /* top: 10%;
+    left: 10%;
+    bottom: 10%;
+    right: 10%; */
+    width: 80%;
+    height: 70%;
+    background-color: gray;
+    border: 10px solid crimson;
+    border-radius: 10px;
+    margin: auto;
+}
+
+#signature {
+    width: 300px;
+}
+
+.container {
+    position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+    margin: auto;
+    background-color: gray;
+    border: 10px solid crimson;
+    border-radius: 10px;
+    width: 500px;
+    height: 150px;
+    text-align: center
 }

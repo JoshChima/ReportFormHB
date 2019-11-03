@@ -7,9 +7,13 @@ const server = http.Server(app);
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 app.use(express.static('./public_html'))
+
+// app.use(morgan())
 
 
 
@@ -22,7 +26,34 @@ app.use(express.static('./public_html'))
 
 // });
 var isSubmitted = false
-app.post('/submit', function(req, res) {
+class ReportData {
+  constructor() {
+  this.name;
+  this.date;
+  this.department;
+  this.phone;
+  this.email;
+  this.title;
+  this.type;
+  this.info;
+  this.signature;
+  }
+
+  input(submission) {
+    this.name = submission[0];
+    this.date = submission[1];
+    this.department = submission[2];
+    this.phone = submission[3];
+    this.email = submission[4];
+    this.title = submission[5];
+    this.type = submission[6];
+    this.info = submission[7];
+    this.signature = submission[8];
+  }
+
+}
+var reportData = new ReportData;
+app.post('/submit', function (req, res) {
   const today = new Date();
   const date = today.getMonth() + '/' + today.getDay() + '/' + today.getFullYear();
   // const submission = [document.getElementById("name").value, 
@@ -35,11 +66,15 @@ app.post('/submit', function(req, res) {
   // document.getElementById("info").value, 
   // document.getElementById("signature").value];
   let submission = [req.body.name, date, req.body.department, req.body.phone, req.body.email, req.body.title, req.body.type, req.body.info, req.body.signature]
+  
+  reportData.input(submission)
+  
   //console.log(submission)
+
   authconnect(submission)
   // res.send(req.body.name);
   isSubmitted = true
-  res.sendFile(path.join(__dirname + '/public_html/index.html'))
+  res.sendFile(path.join(__dirname + '/public_html/submitted.html'))
   // res.end()
 });
 
@@ -81,7 +116,10 @@ function authconnect(sub) {
 
 
 async function gsrun(cl, sub) {
-  const gsapi = google.sheets({ version: 'v4', auth: cl });
+  const gsapi = google.sheets({
+    version: 'v4',
+    auth: cl
+  });
 
   // find the spreadsheetif from url between the last slash sequence
   const opt = {
@@ -93,7 +131,7 @@ async function gsrun(cl, sub) {
   const dataArray = data.data.values;
   //const inputs = [sub.name, sub.date, sub.department, sub.phone, sub.email, sub.reportTitle, sub.reportType, sub.reportInfo, sub.signature];
   // const inputs = sub
-//   const inputs = ['Parker Green', date, 'Advancement', '354-xxxx', 'pg@adv.com', 'test', 'test', 'test', 'test'];
+  //   const inputs = ['Parker Green', date, 'Advancement', '354-xxxx', 'pg@adv.com', 'test', 'test', 'test', 'test'];
   dataArray.push(sub);
   // console.log(dataArray);
 
@@ -101,7 +139,9 @@ async function gsrun(cl, sub) {
     spreadsheetId: '16hXudcRqYpWUpMANcTiFse3Az02MWxU35sl--FgmWBQ',
     range: 'A1',
     valueInputOption: 'USER_ENTERED',
-    resource: { values: dataArray }
+    resource: {
+      values: dataArray
+    }
   };
 
   const res = await gsapi.spreadsheets.values.update(updateOptions);

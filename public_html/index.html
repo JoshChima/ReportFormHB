@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Report Form</title>
     <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- <script src="app.js"></script> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -14,76 +14,113 @@
 </head>
 
 <body>
-    <form action="/submit" method="POST">
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="(first middle_initial. last)">
+    <div class="main-div">
+        <form class="main-form needs-validation" novalidate action="/submit" method="POST"
+            style="width: auto; margin: auto; padding: 10px;">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" name="name"
+                            placeholder="(first middle_initial. last)" required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="department">Department</label>
+                        <input type="text" class="form-control" id="department" name="department"
+                            placeholder="(Advancement)" required>
+                    </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="department">Department</label>
-                    <input type="text" class="form-control" id="department" name="department" placeholder="(Advancement)">
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="555-555-5555"
+                            required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" name="email"
+                            placeholder="_____@crimson.ua.edu" required>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="phone">Phone</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="555-555-5555">
+
+            <div class="form-group">
+                <label for="title">Title of Report</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="type">Type of Report</label>
+                <input type="text" class="form-control" id="type" name="type" required>
+            </div>
+
+            <div class="form-group">
+                <label for="info">Use of Report Information</label>
+                <textarea type="text" class="form-control" id="info" name="info" style="height:100px; width: 700px"
+                    required></textarea>
+            </div>
+            <div class="form-group">
+                <p>The Receiving Party must abide by the general policies to: use only that data needed to perform
+                    assigned
+                    or authorized University duties, adhere to privacy standards to ensure sensitive data is kept
+                    confidential, not use the data for personal gain or to satisfy personal curiosity, maintain data
+                    about
+                    individuals in a secure fashion such that it cannot be viewed by unauthorized individuals, use the
+                    information only for the purpose for which it was requested, not release the information to any
+                    other
+                    individual or office for another purpose than is required to perform their job, and until those
+                    persons
+                    have signed necessary confidentiality forms, not use data received for publication unless the data
+                    is
+                    specifically requested for that purpose, and protect the confidentiality of the information.</p>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <label for="signature">Signature</label>
                 </div>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="_____@crimson.ua.edu">
+            <div class="row">
+                <div class="col pr-0">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="signature" name="signature" required>
+                    </div>
+                </div>
+                <div class="col pr-0">
+                    <div class="form-group">
+                        <button class="btn btn-outline-danger"
+                            style="color: white; background-color: crimson;">Submit</button>
+                        <div class="invalid-feedback"> Please fill out all required sections. </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label for="title">Title of Report</label>
-            <input type="text" class="form-control" id="title" name="title">
-        </div>
-
-        <div class="form-group">
-            <label for="type">Type of Report</label>
-            <input type="text" class="form-control" id="type" name="type">
-        </div>
-
-        <div class="form-group">
-            <label for="info">Use of Report Information</label>
-            <input type="text" class="form-control" id="info" name="info">
-        </div>
-
-        <div class="form-group">
-            <label for="signature">Signature</label>
-            <input type="text" class="form-control" id="signature" name="signature">
-        </div>
-
-        <div class="form-group">
-            <p>The Receiving Party must abide by the general policies to: use only that data needed to perform assigned
-                or authorized University duties, adhere to privacy standards to ensure sensitive data is kept
-                confidential, not use the data for personal gain or to satisfy personal curiosity, maintain data about
-                individuals in a secure fashion such that it cannot be viewed by unauthorized individuals, use the
-                information only for the purpose for which it was requested, not release the information to any other
-                individual or office for another purpose than is required to perform their job, and until those persons
-                have signed necessary confidentiality forms, not use data received for publication unless the data is
-                specifically requested for that purpose, and protect the confidentiality of the information.</p>
-        </div>
-        <button class="btn btn-secondary">Submit</button>
-    </form>
-    <div>
-
+        </form>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+
+    <script>
+        var form = document.querySelector('.needs-validation');
+        form.addEventListener('submit', function (event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        })
     </script>
 </body>
 
